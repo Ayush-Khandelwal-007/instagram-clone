@@ -1,21 +1,20 @@
-// import React,{useContext} from 'react'
 import React from 'react'
 import PostComment from './PostComponents/PostComment'
 import PostHeader from './PostComponents/PostHeader'
 import './PostComponents/Post.css';
-// import {ContextConsumer} from './contexts/ProfileContext'
 
-function Post({caption,imageurl,postusername}) {
-    // const postinfo=useContext(ContextConsumer);
+
+function Post({ caption, imageurl, profilepicurl, postusername }) {
+
     return (
         <div className="Post">
-            <PostHeader postusername={postusername}/>
+            <PostHeader postusername={postusername} profilepicurl={profilepicurl} />
             <img
                 className="Post_image"
                 src={imageurl}
                 alt={imageurl}
             ></img>
-            <PostComment caption={caption} postusername={postusername}/> 
+            <PostComment caption={caption} postusername={postusername} />
         </div>
     )
 }

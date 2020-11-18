@@ -1,8 +1,10 @@
 import React from 'react'
 
-const MyContext=React.createContext({})
+const ProfileContext = React.createContext({})
 
-const ContextProvider=MyContext.Provider;
-const ContextConsumer=MyContext.Consumer;
+const ContextProvider = ProfileContext.Provider;
+const ContextConsumer = ProfileContext.Consumer;
 
-export {ContextProvider,ContextConsumer}
+
+export { ContextProvider, ContextConsumer }
+export default ProfileContext
