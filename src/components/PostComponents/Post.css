@@ -22,10 +22,6 @@
     border-top: 1px  solid  rgba(211, 211, 211, 0.404);
 }
 
-.Post_commentsection{
-    padding:13px;
-}
-
 .Comment_form{
     width: 100%;
     display: flex;
@@ -33,6 +29,14 @@
 
 .comment_input{
     width: 100%;
+}
+
+.Caption_section,.Comment_section{
+    padding-left: 1vw;
+}
+
+.LoggedIn_Info p,h3{
+    font-size: 1.4vmax;
 }
 
 .Comment_Post_Button{

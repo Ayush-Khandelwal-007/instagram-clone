@@ -16,7 +16,8 @@
   
 .app_headerImage{
     object-fit: contain;
-    margin-left: 40px;
+    width: 15vh;
+    margin-left: 5vw;
 }
 
 .Header_Sidebar{

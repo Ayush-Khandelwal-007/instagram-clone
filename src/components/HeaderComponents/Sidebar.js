@@ -54,7 +54,7 @@ function Sidebar() {
             {
                 profileinfo ?
                     (
-                        <div>
+                        <div className="LoggedIn_Info">
                             <p>Logged in as</p>
                             <h3> {profileinfo.displayName}</h3>
                         </div>
