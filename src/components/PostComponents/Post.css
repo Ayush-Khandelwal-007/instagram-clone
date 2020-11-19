@@ -25,3 +25,21 @@
 .Post_commentsection{
     padding:13px;
 }
+
+.Comment_form{
+    width: 100%;
+    display: flex;
+}
+
+.comment_input{
+    width: 100%;
+}
+
+.Comment_Post_Button{
+    background-color: white;
+    border: none;
+}
+
+.arrow{
+    cursor: pointer;
+}

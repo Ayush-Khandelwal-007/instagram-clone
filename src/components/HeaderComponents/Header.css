@@ -1,5 +1,7 @@
 .app_header{
     background-color: white;
+    position: fixed;
+    top:0px;
     width: 99%;
     padding: 10px;
     object-fit: contain;
@@ -9,6 +11,7 @@
     padding-top: 15px;
     align-items: center;
     justify-content: space-between;
+    z-index: 2;
 }
   
 .app_headerImage{
@@ -22,13 +25,34 @@
     justify-content: center;
 }
 
-.Signup_popup{
+.Signup_popup,.Signin_popup{
     position: 'absolute';
     margin-top: 10vh;
-    margin-left: 35vw;
+    margin-left: 30%;
     width: 10vw;
     text-align: center;
     border: '2px solid #000';
     height: fit-content;
     width: fit-content;
+}
+
+@media only screen and (max-width: 600px) {
+    .Signup_popup,.Signin_popup{
+        margin-left: 17%;
+    }
+    button{
+        transform: scale(0.7);
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .Signup_popup,.Signin_popup{
+        margin-left: 12%;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .Signup_popup,.Signin_popup{
+        margin-left: 35%;
+    }
 }

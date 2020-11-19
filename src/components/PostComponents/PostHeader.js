@@ -9,7 +9,7 @@ function PostHeader({ postusername, profilepicurl }) {
             <Avatar
                 className="Avatar"
                 alt={postusername}
-                src={profilepicurl}
+                src={postusername}
             />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <strong>{postusername}</strong>
         </div>
     )

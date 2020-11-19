@@ -10,4 +10,6 @@
   align-items: center;
   overflow: scroll;
   overflow-x:hidden;
+  padding-top: 7vh;
+  padding-bottom: 10vh;
 }

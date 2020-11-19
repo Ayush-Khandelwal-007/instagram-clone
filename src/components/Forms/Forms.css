@@ -6,7 +6,7 @@
     flex-direction: column;
     background-color: white;
     border-radius: 2%;
-    padding: 5vh 3vw 7vh 3vw;
+    padding: 3vmin 4vmin 4vmin 4vmin;
 }
 
 .Sign_Up_Form_Logo{
@@ -16,17 +16,51 @@
 .Sign_Up_Form_Name{
     width: 20vh;
     margin: 3vh;
-
 }
 
 .Sign_Up_Input_Fields{
     display: flex;
     width: max-content;
     flex-direction: column;
-    margin: 0px;
+    margin-right: 0px;
 }
 
 .input_field{
-    margin: 2vh 2vw;
+    margin: 1vh 2vw;
     width: 20vw;
+    background-color: #f9f9f9;
+    padding: 0.5vh;
+}
+
+.Change_Model{
+    color: rgb(43, 116, 175);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.SignButt{
+    border: 0;
+    height: 5vh;
+    margin-top: 2vh;
+    background-color: rgb(33, 130, 209);
+    color: white;
+    font-size: 2.3vmin;
+    padding: 1vh 0vw;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .input_field{
+        margin: 1vh 15vw;
+        width: 40vw;
+    }
+    .Sign_Up_Form_Logo{
+        width: 13vw;
+    }
+    
+    .Sign_Up_Form_Name{
+        width: 20vw;
+        margin: 2vw;
+    }
 }

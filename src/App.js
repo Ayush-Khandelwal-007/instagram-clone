@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Post from './components/Post';
 import React, { useState, useEffect } from 'react'
 import { auth, db } from './Firebase'
@@ -13,17 +14,11 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
+        console.log(authUser);
         setProfileinfo(authUser);
-        if (authUser.displayName) {
-
-        }
-        else {
-          return authUser.updateProfile({
-            displayName: profileinfo.username,
-          });
-        }
       }
       else {
+        console.log('app');
         setProfileinfo(null);
       }
     })
@@ -33,7 +28,7 @@ function App() {
   }, [profileinfo])
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map((doc) => {
         return {
           id: doc.id,
@@ -43,13 +38,13 @@ function App() {
     })
   }
     , [])
-
   return (
     <div className="App">
       <Header />
-        {
-          posts.map(({ id, post }) => <Post caption={post.caption} imageurl={post.imageurl} profilepicurl={post.profilepicurl} postusername={post.username} key={id} />)
-        }
+      {
+        posts.map(({ id, post }) => <Post postId={id} caption={post.caption} imageurl={post.imageurl} profilepicurl={post.profilepicurl} postusername={post.displayName} key={id}/>)
+      }
+      <Footer profileinfo={profileinfo}/>
     </div>
   );
 }

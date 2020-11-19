@@ -4,7 +4,7 @@ import PostHeader from './PostComponents/PostHeader'
 import './PostComponents/Post.css';
 
 
-function Post({ caption, imageurl, profilepicurl, postusername }) {
+function Post({ postId, caption, imageurl, profilepicurl, postusername }) {
 
     return (
         <div className="Post">
@@ -14,7 +14,7 @@ function Post({ caption, imageurl, profilepicurl, postusername }) {
                 src={imageurl}
                 alt={imageurl}
             ></img>
-            <PostComment caption={caption} postusername={postusername} />
+            <PostComment postId={postId} caption={caption} postusername={postusername}/>
         </div>
     )
 }

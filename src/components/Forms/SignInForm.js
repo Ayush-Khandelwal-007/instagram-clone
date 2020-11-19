@@ -3,19 +3,20 @@ import './Forms.css'
 import { Input } from '@material-ui/core'
 import { auth } from '../../Firebase';
 
-function SignUpForm({ dispatch1, dispatch2 }) {
+function SignInForm({ dispatch1, dispatch2 }) {
 
     const [userinfo, setUserinfo] = useState({
         displayName: '',
         email: '',
         password: ''
     });
-
-    const signUp = (e) => {
+    
+    const signIn = (e) => {
         e.preventDefault();
 
-        auth.createUserWithEmailAndPassword(userinfo.email, userinfo.password)
+        auth.signInWithEmailAndPassword(userinfo.email, userinfo.password)
             .then((authUser) => {
+                console.log(authUser.user);
                 authUser.user.updateProfile(
                     {
                         displayName: userinfo.displayName,
@@ -23,13 +24,14 @@ function SignUpForm({ dispatch1, dispatch2 }) {
                 )
             })
             .catch((err) => { alert(err.message); })
-        dispatch1();
+        dispatch2();
     }
 
-    const GoToSignIn = () => {
+    const GoToSignUp = () => {
         dispatch1();
         dispatch2();
     }
+
 
     return (
         <div className="Sign_Up_Form">
@@ -50,13 +52,6 @@ function SignUpForm({ dispatch1, dispatch2 }) {
                     <Input
                         className='input_field'
                         type="text"
-                        placeholder="Display Name"
-                        value={userinfo.displayName}
-                        onChange={e => setUserinfo({ ...userinfo, displayName: e.target.value })}
-                    />
-                    <Input
-                        className='input_field'
-                        type="text"
                         placeholder="Email"
                         value={userinfo.email}
                         onChange={e => setUserinfo({ ...userinfo, email: e.target.value })}
@@ -69,13 +64,13 @@ function SignUpForm({ dispatch1, dispatch2 }) {
                         value={userinfo.password}
                         onChange={e => setUserinfo({ ...userinfo, password: e.target.value })}
                     />
-                    <button className="SignButt" type="submit" onClick={signUp}>Sign Up</button>
+                    <button className="SignButt" type="submit" onClick={signIn}>Sign In</button>
                     <br></br>
-                    <p>Don't have an account? <span className='Change_Model' onClick={GoToSignIn}>SignIn</span></p>
+                    <p>Already have an account? <span className='Change_Model' onClick={GoToSignUp}>SignUp</span></p>
                 </div>
             </form>
         </div>
     )
 }
 
-export default SignUpForm
+export default SignInForm
