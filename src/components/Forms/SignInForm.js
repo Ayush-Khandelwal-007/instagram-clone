@@ -58,7 +58,6 @@ function SignInForm({ dispatch1, dispatch2 }) {
                     />
                     <Input
                         className='input_field'
-                        autocomplete="off"
                         type="password"
                         placeholder="Password"
                         value={userinfo.password}

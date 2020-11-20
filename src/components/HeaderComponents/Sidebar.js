@@ -1,12 +1,11 @@
 import React, { useContext, useReducer } from 'react'
 import './Header.css'
 import '../Forms/Forms.css'
-import Modal from '@material-ui/core/Modal';
 import { Button } from '@material-ui/core'
-import SignUpForm from '../Forms/SignUpForm';
-import SignInForm from '../Forms/SignInForm';
 import { auth } from '../../Firebase'
 import ProfileContext from '../contexts/ProfileContext'
+import SignInPopUp from './SignInPopUp';
+import SignUpPopUp from './SignUpPopUp';
 
 function Sidebar() {
     const initialState = { open: false };
@@ -21,20 +20,9 @@ function Sidebar() {
 
     return (
         <div className="Header_Sidebar">
-            <Modal
-                open={state1.open}
-                onClose={() => dispatch1({ type: 'hide' })}
-                className="Signup_popup"
-            >
-                <SignUpForm dispatch1={dispatch1} dispatch2={dispatch2} />
-            </Modal>
-            <Modal
-                open={state2.open}
-                onClose={() => dispatch2({ type: 'hide' })}
-                className="Signin_popup"
-            >
-                <SignInForm dispatch1={dispatch1} dispatch2={dispatch2} />
-            </Modal>
+            <SignUpPopUp open={state1.open} dispatch1={dispatch1} dispatch2={dispatch2}/>
+            <SignInPopUp open={state2.open} dispatch1={dispatch1} dispatch2={dispatch2}/>
+            
             {
                 profileinfo ?
                     (
