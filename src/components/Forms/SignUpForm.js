@@ -11,6 +11,17 @@ function SignUpForm({ dispatch1, dispatch2 }) {
         password: ''
     });
 
+    const trysignUp = (e) => {
+        if(userinfo.displayName!==''){
+            signUp(e);
+        }
+        else{
+            e.preventDefault();
+            alert('Please Enter a Valid DisplayName')
+            e.preventDefault();
+        }
+    }
+
     const signUp = (e) => {
         e.preventDefault();
 
@@ -22,7 +33,9 @@ function SignUpForm({ dispatch1, dispatch2 }) {
                     }
                 )
             })
-            .catch((err) => { alert(err.message); })
+            .catch((err) => { 
+                e.preventDefault();
+                alert(err.message); })
         dispatch1();
     }
 
@@ -68,7 +81,7 @@ function SignUpForm({ dispatch1, dispatch2 }) {
                         value={userinfo.password}
                         onChange={e => setUserinfo({ ...userinfo, password: e.target.value })}
                     />
-                    <button className="SignButt" type="submit" onClick={signUp}>Sign Up</button>
+                    <button className="SignButt" type="submit" onClick={trysignUp}>Sign Up</button>
                     <br></br>
                     <p>Already have an account? <span className='Change_Model' onClick={GoToSignIn}>SignIn</span></p>
                 </div>

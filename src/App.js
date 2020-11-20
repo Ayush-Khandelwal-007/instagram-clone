@@ -26,7 +26,7 @@ function App() {
     return () => {
       unsubscribe();
     }
-  }, [])
+  }, [profileinfo])
 
   useEffect(() => {
     db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {

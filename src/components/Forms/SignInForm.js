@@ -17,11 +17,6 @@ function SignInForm({ dispatch1, dispatch2 }) {
         auth.signInWithEmailAndPassword(userinfo.email, userinfo.password)
             .then((authUser) => {
                 console.log(authUser.user);
-                authUser.user.updateProfile(
-                    {
-                        displayName: userinfo.displayName,
-                    }
-                )
             })
             .catch((err) => { alert(err.message); })
         dispatch2();
