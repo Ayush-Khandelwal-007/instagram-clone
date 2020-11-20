@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Post from './components/Post';
 import React, { useState, useEffect } from 'react'
 import { auth, db } from './Firebase'
+import { ContextProvider } from './components/contexts/ProfileContext'
 
 function App() {
   document.title = 'Instagram'
@@ -40,11 +41,13 @@ function App() {
     , [])
   return (
     <div className="App">
-      <Header />
-      {
-        posts.map(({ id, post }) => <Post postId={id} caption={post.caption} imageurl={post.imageurl} profilepicurl={post.profilepicurl} postusername={post.displayName} key={id}/>)
-      }
-      <Footer profileinfo={profileinfo}/>
+      <ContextProvider value={profileinfo}>
+        <Header />
+        {
+          posts.map(({ id, post }) => <Post postId={id} caption={post.caption} imageurl={post.imageurl} profilepicurl={post.profilepicurl} postusername={post.displayName} key={id} />)
+        }
+        <Footer profileinfo={profileinfo} />
+      </ContextProvider>
     </div>
   );
 }

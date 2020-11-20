@@ -1,30 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button } from '@material-ui/core'
 import firebase from 'firebase';
-import { auth, storage, db } from '../../Firebase'
+import { storage, db } from '../../Firebase'
+import ProfileContext from '../contexts/ProfileContext'
 
 function ImageUpload() {
     const [caption, setCaption] = useState('');
     const [inputImage, setInputImage] = useState(null);
     const [progress, setProgress] = useState(0);
 
-    const [profileinfo, setProfileinfo] = useState({});
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((authUser) => {
-            if (authUser) {
-                console.log(authUser);
-                setProfileinfo(authUser);
-            }
-            else {
-                console.log('IU');
-                setProfileinfo(null);
-            }
-        })
-        return () => {
-            unsubscribe();
-        }
-    }, [profileinfo])
+    const profileinfo=useContext(ProfileContext);
 
     const Upload = () => {
         if(caption!=='' && inputImage ){

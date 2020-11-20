@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useContext, useReducer } from 'react'
 import './Header.css'
 import '../Forms/Forms.css'
 import Modal from '@material-ui/core/Modal';
@@ -6,34 +6,18 @@ import { Button } from '@material-ui/core'
 import SignUpForm from '../Forms/SignUpForm';
 import SignInForm from '../Forms/SignInForm';
 import { auth } from '../../Firebase'
+import ProfileContext from '../contexts/ProfileContext'
 
 function Sidebar() {
     const initialState = { open: false };
     const [state1, dispatch1] = useReducer(reducer, initialState);
     const [state2, dispatch2] = useReducer(reducer, initialState);
     
-
-    const [profileinfo, setProfileinfo] = useState({});
+    const profileinfo=useContext(ProfileContext);
 
     function reducer(state) {
         return { open: !(state.open) };
     }
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((authUser) => {
-            if (authUser) {
-                console.log(authUser);
-                setProfileinfo(authUser);
-            }
-            else {
-                console.log('footer');
-                setProfileinfo(null);
-            }
-        })
-        return () => {
-            unsubscribe();
-        }
-    }, [profileinfo])
 
     return (
         <div className="Header_Sidebar">

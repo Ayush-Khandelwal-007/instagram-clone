@@ -1,5 +1,5 @@
 import React from 'react'
-import PostComment from './PostComponents/PostComment'
+import PostComment from './PostComponents/CommentSection'
 import PostHeader from './PostComponents/PostHeader'
 import './PostComponents/Post.css';
 

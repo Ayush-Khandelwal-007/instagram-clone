@@ -1,44 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { BsFillCaretRightFill,BsCaretRight } from 'react-icons/bs';
-import { db, auth } from '../../Firebase'
-import { Input } from '@material-ui/core'
+import { db } from '../../Firebase'
 import firebase from 'firebase'
+import ProfileContext from '../contexts/ProfileContext'
 
 
 function AddComment({postId}) {
     const [comment, setComment] = useState('');
 
-    const [profileinfo, setProfileinfo] = useState({});
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((authUser) => {
-            if (authUser) {
-                setProfileinfo(authUser);
-            }
-            else {
-                console.log('app');
-                setProfileinfo(null);
-            }
-        })
-        return () => {
-            unsubscribe();
-        }
-    }, [profileinfo])
+    const profileinfo=useContext(ProfileContext);
 
     const PostComment = (event) => {
         event.preventDefault();
-        db.collection("posts").doc(postId).collection("comments").add({
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            username:profileinfo.displayName,
-            text:comment
-        })
-        setComment('');
+        if(profileinfo) {
+
+            db.collection("posts").doc(postId).collection("comments").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                username:profileinfo?.displayName,
+                text:comment
+            })
+            setComment('');
+        }
     }
     
     return (
         <div>
             <form className='Comment_form'>
-                <Input
+                <input
                     className="comment_input"
                     placeholder="Add a comment"
                     value={comment}

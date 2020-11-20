@@ -4,7 +4,7 @@
     width: 100%;
     max-width: 600px;
     border: 1px  solid lightgray;
-    border-radius: 2px;
+    border-radius: 7px;
 }
 
 .Post_header{
@@ -23,16 +23,33 @@
 }
 
 .Comment_form{
-    width: 100%;
+    width: 97%;
     display: flex;
+    padding-left: 1vw;
+    justify-content: space-between;
+    border-top: 1px solid lightgray;
 }
 
 .comment_input{
-    width: 100%;
+    width: 90%;
+    border: 0;
 }
 
-.Caption_section,.Comment_section{
+.comment_input:focus{
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.Caption_section{
     padding-left: 1vw;
+    padding-bottom: 1vh;}
+
+.Comment_section{
+    padding-left: 1vw;
+    padding-bottom: 2vh;
+    max-height: 10vh;
+    overflow: auto;
 }
 
 .LoggedIn_Info p,h3{
@@ -46,4 +63,9 @@
 
 .arrow{
     cursor: pointer;
+    
+}
+
+.comment{
+    color: rgba(26, 30, 31, 0.897);
 }

@@ -66,7 +66,7 @@ function SignInForm({ dispatch1, dispatch2 }) {
                     />
                     <button className="SignButt" type="submit" onClick={signIn}>Sign In</button>
                     <br></br>
-                    <p>Already have an account? <span className='Change_Model' onClick={GoToSignUp}>SignUp</span></p>
+                    <p>Don't have an account? <span className='Change_Model' onClick={GoToSignUp}>SignUp</span></p>
                 </div>
             </form>
         </div>
