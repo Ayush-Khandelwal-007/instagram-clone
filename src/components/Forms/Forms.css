@@ -7,6 +7,7 @@
     background-color: white;
     border-radius: 2%;
     padding: 3vmin 4vmin 4vmin 4vmin;
+    align-items: center;
 }
 
 .Sign_Up_Form_Logo{
@@ -22,7 +23,6 @@
     display: flex;
     width: max-content;
     flex-direction: column;
-    margin-right: 0px;
 }
 
 .input_field{
@@ -52,7 +52,7 @@
 
 @media only screen and (max-width: 600px) {
     .input_field{
-        margin: 1vh 15vw;
+        margin: 1vh 10vw;
         width: 40vw;
     }
     .Sign_Up_Form_Logo{
@@ -63,4 +63,9 @@
         width: 20vw;
         margin: 2vw;
     }
+}
+.Google{
+    transform: scale(2);
+    margin-top:3vh;
+    margin-right: 1vw;
 }

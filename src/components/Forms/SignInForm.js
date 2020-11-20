@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Forms.css'
 import { Input } from '@material-ui/core'
 import { auth } from '../../Firebase';
+import GoogleLogin from './GoogleLogin'
 
 function SignInForm({ dispatch1, dispatch2 }) {
 
@@ -10,7 +11,7 @@ function SignInForm({ dispatch1, dispatch2 }) {
         email: '',
         password: ''
     });
-    
+
     const signIn = (e) => {
         e.preventDefault();
 
@@ -59,10 +60,11 @@ function SignInForm({ dispatch1, dispatch2 }) {
                         onChange={e => setUserinfo({ ...userinfo, password: e.target.value })}
                     />
                     <button className="SignButt" type="submit" onClick={signIn}>Sign In</button>
-                    <br></br>
-                    <p>Don't have an account? <span className='Change_Model' onClick={GoToSignUp}>SignUp</span></p>
                 </div>
             </form>
+            <br></br>
+            <p>Don't have an account? <span className='Change_Model' onClick={GoToSignUp}>SignUp</span></p>
+            <GoogleLogin dispatch={dispatch2} />
         </div>
     )
 }

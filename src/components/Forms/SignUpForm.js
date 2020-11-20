@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Forms.css'
 import { Input } from '@material-ui/core'
 import { auth } from '../../Firebase';
+import GoogleLogin from './GoogleLogin';
 
 function SignUpForm({ dispatch1, dispatch2 }) {
 
@@ -12,10 +13,10 @@ function SignUpForm({ dispatch1, dispatch2 }) {
     });
 
     const trysignUp = (e) => {
-        if(userinfo.displayName!==''){
+        if (userinfo.displayName !== '') {
             signUp(e);
         }
-        else{
+        else {
             e.preventDefault();
             alert('Please Enter a Valid DisplayName')
             e.preventDefault();
@@ -33,9 +34,10 @@ function SignUpForm({ dispatch1, dispatch2 }) {
                     }
                 )
             })
-            .catch((err) => { 
+            .catch((err) => {
                 e.preventDefault();
-                alert(err.message); })
+                alert(err.message);
+            })
         dispatch1();
     }
 
@@ -82,10 +84,11 @@ function SignUpForm({ dispatch1, dispatch2 }) {
                         onChange={e => setUserinfo({ ...userinfo, password: e.target.value })}
                     />
                     <button className="SignButt" type="submit" onClick={trysignUp}>Sign Up</button>
-                    <br></br>
-                    <p>Already have an account? <span className='Change_Model' onClick={GoToSignIn}>SignIn</span></p>
                 </div>
             </form>
+            <br></br>
+            <p>Already have an account? <span className='Change_Model' onClick={GoToSignIn}>SignIn</span></p>
+            <GoogleLogin dispatch={dispatch1} />
         </div>
     )
 }
